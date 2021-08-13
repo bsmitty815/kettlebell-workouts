@@ -29,6 +29,11 @@ function App() {
     setMyWorkoutToDisplay([...workoutsBefore, ...workoutsAfter])
   }
 
+  const workoutDisplay = myWorkoutToDisplay.map((obj, index) => {
+    return obj.map((workout) =>  {
+    return <div key={workout.image}><MyWorkouts {...workout} index={index} deleteWorkout={deleteWorkout} /></div>
+    })
+  })
 
   return (
     <div >
@@ -40,7 +45,8 @@ function App() {
           {kettlebellWorkoutsDisplay}
         </div>
         <div className="column">
-          <MyWorkouts workouts={myWorkoutToDisplay} deleteWorkout={deleteWorkout} />
+          {workoutDisplay}
+          
         </div>  
       </div>
    
